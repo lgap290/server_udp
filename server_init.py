@@ -19,14 +19,14 @@ def udp_server(host='127.0.0.1', port=1234):
 FORMAT_CONS = '%(asctime)s %(name)-12s %(levelname)8s\t%(message)s'
 logging.basicConfig(level=logging.DEBUG, format=FORMAT_CONS)
 
-# UDP_IP_ADDRESS = "157.245.249.100"
-# UDP_PORT_NO = 6789
-UDP_IP_ADDRESS = "127.0.0.1"
+UDP_IP_ADDRESS = "143.244.169.167"
 UDP_PORT_NO = 6789
+# UDP_IP_ADDRESS = "127.0.0.1"
+# UDP_PORT_NO = 6789
 
 for data in udp_server(UDP_IP_ADDRESS, UDP_PORT_NO):
     log.debug("Message received: %r" % (data,))
-    data_antena = data.split(',')
+    data_antena = data.decode().split(',')
     response = requests.post("http://localhost:8000/api/consume", data = {
         "id":data_antena[0],
         "date":data_antena[1],
