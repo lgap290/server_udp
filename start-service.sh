@@ -1,0 +1,1 @@
+nohup python3 server_init.py >> output.txt &
